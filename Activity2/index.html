@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Blog Post</title>
+    <style>
+        .important {
+            font-weight: bold;
+            color: green;
+        }
+        .comment {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        #main-title {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Change the main title
+        const mainTitle = document.getElementById("main-title");
+        mainTitle.textContent = "Exploring the Power of DOM Manipulation";
+    
+        // Count the paragraphs
+        const paragraphs = document.getElementsByClassName("post-paragraph");
+        console.log("Total number of paragraphs:", paragraphs.length);
+    
+        // Find all comment authors
+        const commentAuthors = document.getElementById("comments-section").getElementsByTagName("p");
+        Array.from(commentAuthors).forEach(comment => {
+            if (comment.classList.contains("comment-author")) {
+                console.log("Comment Author:", comment.textContent);
+            }
+        });
+    
+        // Selected the first important tag
+        const firstImportantTag = document.querySelector("#tags .important");
+        firstImportantTag.textContent += " (Featured)";
+    
+        // Highlighted all important elements
+        const importantElements = document.querySelectorAll(".important");
+        importantElements.forEach(element => {
+            element.style.color = "blue";
+        });
+
+        // Function to change all highlighted text color to blue
+        function changeHighlightedTextColor() {
+            const importantElements = document.querySelectorAll(".important");
+            importantElements.forEach(element => {
+                element.style.color = "blue";
+            });
+        }
+    </script>
+
+    <h1 id="main-title">The Wonders of JavaScript</h1>
+    <p class="post-paragraph">
+        JavaScript is an amazing language that allows for dynamic web development.
+    </p>
+    <p class="post-paragraph important">
+        One of its key features is the ability to manipulate the DOM.
+    </p>
+    <div id="comments-section">
+        <h2>Comments</h2>
+        <div class="comment" data-comment-id="1">
+            <p class="comment-author">Alice</p>
+            <p class="comment-text">Great post!</p>
+        </div>
+        <div class="comment">
+            <p class="comment-author">Bob</p>
+            <p class="comment-text important">I learned a lot.</p>
+        </div>
+        <ul id="tags">
+            <li class="tag">javascript</li>
+            <li class="tag important">dom</li>
+            <li class="tag">web development</li>
+        </ul>
+    </div>
+
+    <button onclick="changeHighlightedTextColor()">Change Highlighted Text Color</button>
+</body>
+</html>
